@@ -1,0 +1,119 @@
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand">Food Plaza</a>
+
+    <button (click)="clickAddResto()" class="btn btn-outline bg-info" type="submit" (click)="openPopup()">Add
+      Restaurant</button>
+
+
+
+  </div>
+</nav>
+
+<!-- Jumbotron -->
+<div class="p-5 text-center bg-image rounded-3" style="
+background-image: url('assets/abc.jpg');
+height: 250px;
+">
+  <div class="mask w-25 p-3 position-relative " style="background-color: rgba(0, 0, 0, 0.6);">
+    <div class="d-flex justify-content-center align-items-center h-100 ">
+      <div class="text-white">
+        <h1 class="mb-3">Restaurant Management App</h1>
+        <h4 class="mb-3"></h4>
+        <a class="btn btn-outline-light btn-lg" href="#!" role="button">Home</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Jumbotron -->
+
+<!--table content-->
+<table class="table mt-1 table-light mt=0 p-0">
+  <thead>
+    <tr class="bg-dark">
+      <th scope="col">Reestaurant ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Mobile</th>
+      <th scope="col">Address</th>
+      <th scope="col">Services </th>
+      <th scope="col">Action </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of allRestaurentData">
+      <td>{{data.id}}</td>
+      <td>{{data.name}}</td>
+      <td>{{data.email}}</td>
+      <td>{{data.mobile}}</td>
+      <td>{{data.address}}</td>
+      <td>{{data.services}}</td>
+
+      <td>
+        <button class="btn btn-info" (click)="openPopup()" (click)="onEditResto(data)">Edit </button>&nbsp;
+        <button class="btn btn-danger" (click)="deleteResto(data)">Delete</button>
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!--pop up restaurent-->
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <!--<div class="modal-header">
+		<h4>-->
+      <div class="modal-body">
+        <!--Reactive form -->
+
+        <form [formGroup]="formValue">
+          <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input formControlName="name" type="text" class="form-control" id="exampleInputEmail1"
+              aria-describedby="emailHelp" placeholder="Restaurent name " required="name">
+
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Email Id</label>
+            <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1"
+              aria-describedby="emailHelp" placeholder="email@ex.com ">
+
+          </div>
+          <div class="mb-3" *ngIf="showBtn">
+            <label class="form-label">Mobile </label>
+            <input formControlName="mobile" type="number" class="form-control" id="exampleInputEmail1"
+              aria-describedby="emailHelp" placeholder="enter mobile number ">
+
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Address </label>
+            <input formControlName="address" type="text" class="form-control" id="exampleInputEmail1"
+              aria-describedby="emailHelp" placeholder="Address ">
+
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Services</label>
+            <input formControlName="services" type="text" class="form-control" id="exampleInputEmail1"
+              aria-describedby="emailHelp" placeholder="Service ">
+
+          </div>
+
+        </form>
+
+
+        <!--Form End-->
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" (click)="closePopup()">
+          Close
+        </button>
+        <button type="button" class="btn btn-success" (click)="closePopup()" (click)="addResto()">
+          Add Details
+        </button>
+        <button *ngIf="showBtn" type="button" class="btn btn-info" (click)="updateResto()">Upadte </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "name": "faaa11%%",
+      "email": "musaib709@gmail.com",
+      "mobile": null,
+      "address": "pampoooo",
+      "services": "coffee"
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}
